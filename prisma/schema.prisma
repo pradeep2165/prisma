@@ -15,8 +15,14 @@ datasource db {
 }
 
 model Post {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  body String
-
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  body     String
+  authorId String  // scalar foreign key
+  author   Author  @relation(fields: [authorId], references: [id])
+}
+model Author {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  name  String
+  posts Post[]  // back relation
 }

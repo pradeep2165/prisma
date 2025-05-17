@@ -1,12 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 async function main() {
-  const post = await prisma.post.create({
+  const author = await prisma.author.create({
     data: {
-      title: "Hello World",
-      body: "This is my first post",
+      name: "John Doe",
     },
   });
-  console.log(post);
+  console.log(author);
 }
 main();
